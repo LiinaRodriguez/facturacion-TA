@@ -18,7 +18,7 @@ public class Plataforma {
         this.id = id;
         this.plataforma = plataforma;
     }
-
+    public Plataforma(){}
     public String getPlataforma() {
         return plataforma;
     }

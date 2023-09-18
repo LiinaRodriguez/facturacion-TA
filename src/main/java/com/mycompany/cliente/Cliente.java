@@ -5,6 +5,7 @@ import com.mycompany.cliente.DAO.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class Cliente {
 
@@ -56,15 +57,14 @@ public class Cliente {
             usuarioRegistradoDAO.insertarUsuarioRegistrado(usuarioRegistrado);*/
 
             //Login
-
             /*Loginauth loginauth = new Loginauth(connection);
             boolean inicioSesion = loginauth.verificarInicioSesion("usuario34", "33inf4", 1);
             if(inicioSesion){
                 System.out.print("Inicio de sesion exitoso");
                 Login login = new Login();
                 login.setFecha_hora(new Timestamp(System.currentTimeMillis()));
-                login.setUsuarioRegistrado();
-
+                login.setUsuarioRegistrado(loginauth.obtenerUsuarioRegistrado("usuario34", "33inf4", 1));
+                loginauth.insertLogin(login);
             }*/
 
             //Insertar
@@ -110,7 +110,6 @@ public class Cliente {
             for (Persona persona : personas) {
                 System.out.println(persona.toString());
             }*/
-
 
             connection.close();
         } catch (SQLException e) {

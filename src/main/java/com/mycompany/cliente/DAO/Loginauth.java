@@ -1,5 +1,8 @@
 package com.mycompany.cliente.DAO;
 
+import com.mycompany.cliente.Login;
+import com.mycompany.cliente.Plataforma;
+import com.mycompany.cliente.Usuario;
 import com.mycompany.cliente.UsuarioRegistrado;
 
 import java.sql.Connection;
@@ -35,8 +38,8 @@ public class Loginauth {
         return false;
     }
 
-   /* public UsuarioRegistrado obtenerUsuarioRegistrado(String usuario, String contrasena, int plataformaID){
-        String sql = "SELECT ur.ID_UsuarioRegistrado, ur.UsuarioID, ur.PlataformaID FROM usuarioregistrado ur " +
+   public UsuarioRegistrado obtenerUsuarioRegistrado(String usuario, String contrasena, int plataformaID){
+        String sql = "SELECT ur.ID_UsuarioRegistrado, ur.UsuarioID, ur.PlataformaID, u.*, p.* FROM usuarioregistrado ur " +
                 "INNER JOIN usuario u ON ur.UsuarioID = u.ID_Usuario " +
                 "INNER JOIN plataforma p ON ur.PlataformaID = ID_Plataforma " +
                 "WHERE u.NombreUsuario = ? AND u.contrasena = ? AND p.ID_Plataforma = ?";
@@ -49,19 +52,33 @@ public class Loginauth {
                 if(resultSet.next()){
                     UsuarioRegistrado usuarioRegistrado = new UsuarioRegistrado();
                     usuarioRegistrado.setId(resultSet.getInt("ID_UsuarioRegistrado"));
-                    usuarioRegistrado.setUsuario(resultSet.getInt("UsuarioID"));
-                    usuarioRegistrado.setPlataformaID(resultSet.getInt("PlataformaID"));
+
+                    //usuario
+                    Usuario usuarior = new Usuario();
+                    usuarior.setId(resultSet.getInt("ID_Usuario"));
+                    usuarior.setUsuario(resultSet.getString("NombreUsuario"));
+                    usuarior.setPassword(resultSet.getString("contrasena")); // Agrega otros campos según sea necesario
+                    usuarioRegistrado.setUsuario(usuarior);
+
+                    //plataforma
+                    Plataforma plataforma = new Plataforma();
+                    plataforma.setId(resultSet.getInt("ID_Plataforma"));
+                    plataforma.setPlataforma(resultSet.getString("NombrePlataforma"));
+                    usuarioRegistrado.setPlataforma(plataforma);
+
                     return usuarioRegistrado;
                 }
-
-
             } catch (SQLException e) {
                 e.printStackTrace();
             }
             return null;
     }
-    */
-    public void insertLogin(){
 
+    public void insertLogin(Login login) throws SQLException{
+        String sql = "INSERT INTO login ( UsuarioRegistradoID) VALUES (?)";
+        try(PreparedStatement statement = conexion.prepareStatement(sql)){
+            statement.setInt(1, login.getUsuarioRegistrado().getId());
+            statement.executeUpdate();
+        }
     }
 }

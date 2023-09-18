@@ -4,6 +4,8 @@
  */
 package com.mycompany.cliente;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -13,10 +15,10 @@ import java.util.ArrayList;
 
 public class Login{
     private int id;
-    private String fecha_hora;
+    private Timestamp fecha_hora;
     private UsuarioRegistrado usuarioRegistrado;
 
-    public Login(int id, String fecha_hora, UsuarioRegistrado usuarioRegistrado) {
+    public Login(int id, Timestamp fecha_hora, UsuarioRegistrado usuarioRegistrado) {
         this.id = id;
         this.fecha_hora = fecha_hora;
         this.usuarioRegistrado = usuarioRegistrado;
@@ -27,7 +29,7 @@ public class Login{
         return id;
     }
 
-    public String getFecha_hora() {
+    public Timestamp getFecha_hora() {
         return fecha_hora;
     }
 
@@ -39,7 +41,7 @@ public class Login{
         this.id = id;
     }
 
-    public void setFecha_hora(String fecha_hora) {
+    public void setFecha_hora(Timestamp fecha_hora) {
         this.fecha_hora = fecha_hora;
     }
 
