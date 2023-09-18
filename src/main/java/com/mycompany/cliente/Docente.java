@@ -3,12 +3,11 @@ package com.mycompany.cliente;
 public class Docente extends Persona {
     
     private String Facultad;
-    private String id;
     private String correo;
     private String carnet;
 
-    public Docente(String nombre, String apellido, String telefono, String Facultad, String id, String correo, String carnet) {
-        super(nombre, apellido, telefono);
+    public Docente(int id, String nombre, String apellido, String telefono, String Facultad, String correo, String carnet) {
+        super(id, nombre, apellido, telefono);
         this.Facultad = Facultad;
         this.id = id;
         this.correo =correo;
@@ -19,9 +18,6 @@ public class Docente extends Persona {
         return Facultad;
     }
 
-    public String getId() {
-        return id;
-    }
   
     public String getCorreo(){
         return correo;

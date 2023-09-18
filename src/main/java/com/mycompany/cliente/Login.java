@@ -12,14 +12,42 @@ import java.util.ArrayList;
  */
 
 public class Login{
-    private ArrayList<UsuarioRegistrado> usuariosRegistrados;
+    private int id;
+    private String fecha_hora;
+    private UsuarioRegistrado usuarioRegistrado;
 
-    public Login(ArrayList<UsuarioRegistrado> usuariosRegistrados) {
-        this.usuariosRegistrados = usuariosRegistrados;
+    public Login(int id, String fecha_hora, UsuarioRegistrado usuarioRegistrado) {
+        this.id = id;
+        this.fecha_hora = fecha_hora;
+        this.usuarioRegistrado = usuarioRegistrado;
+    }
+    public Login(){}
+
+    public int getId() {
+        return id;
     }
 
-    /*public boolean iniciarSesion(String nombreUsuario, String contraseña) {
+    public String getFecha_hora() {
+        return fecha_hora;
+    }
 
-    }*/
-    
+    public UsuarioRegistrado getUsuarioRegistrado() {
+        return usuarioRegistrado;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setFecha_hora(String fecha_hora) {
+        this.fecha_hora = fecha_hora;
+    }
+
+    public void setUsuarioRegistrado(UsuarioRegistrado usuarioRegistrado) {
+        this.usuarioRegistrado = usuarioRegistrado;
+    }
+
+    public void iniciarSesion(boolean inicioSesion){
+        if (inicioSesion == true){System.out.println("Inicio de sesion exitoso");    } //crea un objeto login y lo guarda en la base de datos
+    }
 }

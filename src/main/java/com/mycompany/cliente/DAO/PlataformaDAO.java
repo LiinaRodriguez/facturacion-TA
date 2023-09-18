@@ -16,7 +16,7 @@ public class PlataformaDAO {
     }
 
     public void insertarPlataforma(Plataforma plataforma) throws SQLException {
-        String sql = "INSERT INTO usuario(ID_Plataforma, NombrePlataforma) VALUES (?, ?)";
+        String sql = "INSERT INTO plataforma(ID_Plataforma, NombrePlataforma) VALUES (?, ?)";
         try (PreparedStatement statement = conexion.prepareStatement(sql)) {
             statement.setInt(1, plataforma.getId());
             statement.setString(2, plataforma.getPlataforma());

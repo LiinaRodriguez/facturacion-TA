@@ -19,36 +19,53 @@ public class Cliente {
 
             Connection connection = DriverManager.getConnection(jdbcUrl, db_usuario, db_contrasena);
 
-            ServicioDAO servicioDAO  = new ServicioDAO(connection);
+            //Acceso a la base de datos
+            /*ServicioDAO servicioDAO  = new ServicioDAO(connection);
             PersonaDAO personaDAO = new PersonaDAO(connection);
             UsuarioDAO usuarioDAO = new UsuarioDAO(connection);
             DetalleVentaServicioDAO detalleVentaServicioDAO = new DetalleVentaServicioDAO(connection);
             PlataformaDAO plataformaDAO = new PlataformaDAO(connection);
-            UsuarioRegistradoDAO usuarioRegistradoDAO = new UsuarioRegistradoDAO(connection);
+            UsuarioRegistradoDAO usuarioRegistradoDAO = new UsuarioRegistradoDAO(connection);*/
 
             //Nuevo Servicio
-            Servicio servicio1 = new Servicio(1,"Carnet", "2000");
-            servicioDAO.insertServicio(servicio1);
+            /*Servicio servicio1 = new Servicio(2,"Carnet", "2000");
+            servicioDAO.insertServicio(servicio1);*/
 
             //Nueva DetalleVentaServicio
-            DetalleVentaServicio detalleventaservicio = new DetalleVentaServicio(1, "02-10-23", 2, servicio1);
-            detalleVentaServicioDAO.insertDetalleVentaServicio(detalleventaservicio);
+            /*DetalleVentaServicio detalleventaservicio = new DetalleVentaServicio(1, "02-10-23", 2, servicio1);
+            detalleVentaServicioDAO.insertDetalleVentaServicio(detalleventaservicio);*/
 
             //Nueva plataforma
-            Plataforma plataforma = new Plataforma(1, "SIAU");
-            plataformaDAO.insertarPlataforma(plataforma);
+           /* Plataforma plataforma = new Plataforma(1, "SIAU");
+            plataformaDAO.insertarPlataforma(plataforma);*/
 
             //Nueva persona
-            Persona nuevaPersona = new Persona(1, "Carlos", "Marin", "3140367472");
-            personaDAO.insertPersona(nuevaPersona);
+           /* Persona nuevaPersona = new Persona();
+            nuevaPersona.setId(1);
+            nuevaPersona.setNombre("Carlos");
+            nuevaPersona.setApellido("Marin");
+            nuevaPersona.setTelefono("3140367472");
+            personaDAO.insertPersona(nuevaPersona);*/
 
             //Nuevo usuario
-            Usuario nuevoUsuario = new Usuario(1, "usuario34", "33inf4", nuevaPersona);
-            usuarioDAO.insertarUsuario(nuevoUsuario);
+            /*Usuario nuevoUsuario = new Usuario(1, "usuario34", "33inf4", nuevaPersona);
+            usuarioDAO.insertarUsuario(nuevoUsuario);*/
 
             //Nuevo usuario registrado
-            UsuarioRegistrado usuarioRegistrado = new UsuarioRegistrado(1,nuevoUsuario, plataforma);
-            usuarioRegistradoDAO.insertarUsuarioRegistrado(usuarioRegistrado);
+            /*UsuarioRegistrado usuarioRegistrado = new UsuarioRegistrado(1,nuevoUsuario, plataforma);
+            usuarioRegistradoDAO.insertarUsuarioRegistrado(usuarioRegistrado);*/
+
+            //Login
+
+            /*Loginauth loginauth = new Loginauth(connection);
+            boolean inicioSesion = loginauth.verificarInicioSesion("usuario34", "33inf4", 1);
+            if(inicioSesion){
+                System.out.print("Inicio de sesion exitoso");
+                Login login = new Login();
+                login.setFecha_hora(new Timestamp(System.currentTimeMillis()));
+                login.setUsuarioRegistrado();
+
+            }*/
 
             //Insertar
             /* Usuario nuevoUsuario = new Usuario("usuario34", "33inf4");

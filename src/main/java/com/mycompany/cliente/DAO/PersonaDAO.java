@@ -15,11 +15,12 @@ public class PersonaDAO {
     }
 
     public void insertPersona(Persona persona) throws  SQLException {
-        String sql = "INSERT INTO persona(nombre, apellido, telefono) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO persona(ID_Persona,nombre, apellido, telefono) VALUES (?, ?, ?, ?)";
         try (PreparedStatement statement = conexion.prepareStatement(sql)) {
-            statement.setString(1, persona.getNombre());
-            statement.setString(2, persona.getApellido());
-            statement.setString(3, persona.getTelefono());
+            statement.setInt(1, persona.getId());
+            statement.setString(2, persona.getNombre());
+            statement.setString(3, persona.getApellido());
+            statement.setString(4, persona.getTelefono());
             statement.executeUpdate();
         }
     }

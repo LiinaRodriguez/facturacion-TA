@@ -20,6 +20,7 @@ private Plataforma plataforma;
         this.plataforma = plataforma;
     }
 
+    public UsuarioRegistrado(){}
     public int getId(){ return id; }
 
     public Usuario getUsuario() {
