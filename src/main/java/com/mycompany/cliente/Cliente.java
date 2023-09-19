@@ -15,21 +15,25 @@ public class Cliente {
         String jdbcUrl = "jdbc:mysql://localhost:3306/facturacion_db";
         String db_usuario = "root";
         String db_contrasena = "3c_3Za24umYfr$g";
+        Connection connection = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            Connection connection = DriverManager.getConnection(jdbcUrl, db_usuario, db_contrasena);
+            connection = DriverManager.getConnection(jdbcUrl, db_usuario, db_contrasena);
+
+            // Iniciar la transacción
+            connection.setAutoCommit(false);
 
             //Acceso a la base de datos
-            /*ServicioDAO servicioDAO  = new ServicioDAO(connection);
+            ServicioDAO servicioDAO  = new ServicioDAO(connection);
             PersonaDAO personaDAO = new PersonaDAO(connection);
             UsuarioDAO usuarioDAO = new UsuarioDAO(connection);
             DetalleVentaServicioDAO detalleVentaServicioDAO = new DetalleVentaServicioDAO(connection);
             PlataformaDAO plataformaDAO = new PlataformaDAO(connection);
-            UsuarioRegistradoDAO usuarioRegistradoDAO = new UsuarioRegistradoDAO(connection);*/
+            UsuarioRegistradoDAO usuarioRegistradoDAO = new UsuarioRegistradoDAO(connection);
 
             //Nuevo Servicio
-            /*Servicio servicio1 = new Servicio(2,"Carnet", "2000");
+            /*Servicio servicio1 = new Servicio(3,"Carnet", "2000");
             servicioDAO.insertServicio(servicio1);*/
 
             //Nueva DetalleVentaServicio
@@ -110,13 +114,33 @@ public class Cliente {
             for (Persona persona : personas) {
                 System.out.println(persona.toString());
             }*/
+            connection.commit();
 
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
+            try {
+                if (connection != null) {
+                    connection.rollback();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+
+            }
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
+        } finally {
+            try {
+                // Restaurar la configuración de autocommit
+                if (connection != null) {
+                    connection.setAutoCommit(true);
+                }
+                // Cerrar la conexión
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-        
     }
 }
