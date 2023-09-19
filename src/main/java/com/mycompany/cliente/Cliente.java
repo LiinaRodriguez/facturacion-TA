@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.List;
 
 public class Cliente {
 
@@ -33,19 +34,19 @@ public class Cliente {
             UsuarioRegistradoDAO usuarioRegistradoDAO = new UsuarioRegistradoDAO(connection);
 
             //Nuevo Servicio
-            /*Servicio servicio1 = new Servicio(3,"Carnet", "2000");
-            servicioDAO.insertServicio(servicio1);*/
+            Servicio servicio1 = new Servicio(2,"Carnet", "2000");
+            servicioDAO.insertServicio(servicio1);
 
             //Nueva DetalleVentaServicio
-            /*DetalleVentaServicio detalleventaservicio = new DetalleVentaServicio(1, "02-10-23", 2, servicio1);
-            detalleVentaServicioDAO.insertDetalleVentaServicio(detalleventaservicio);*/
+            DetalleVentaServicio detalleventaservicio = new DetalleVentaServicio(1, "02-10-23", 2, servicio1);
+            detalleVentaServicioDAO.insertDetalleVentaServicio(detalleventaservicio);
 
             //Nueva plataforma
-           /* Plataforma plataforma = new Plataforma(1, "SIAU");
-            plataformaDAO.insertarPlataforma(plataforma);*/
+            Plataforma plataforma = new Plataforma(1, "SIAU");
+            plataformaDAO.insertarPlataforma(plataforma);
 
             //Nueva persona
-           /* Persona nuevaPersona = new Persona();
+            /*Persona nuevaPersona = new Persona();
             nuevaPersona.setId(1);
             nuevaPersona.setNombre("Carlos");
             nuevaPersona.setApellido("Marin");
@@ -61,7 +62,7 @@ public class Cliente {
             usuarioRegistradoDAO.insertarUsuarioRegistrado(usuarioRegistrado);*/
 
             //Login
-            /*Loginauth loginauth = new Loginauth(connection);
+            Loginauth loginauth = new Loginauth(connection);
             boolean inicioSesion = loginauth.verificarInicioSesion("usuario34", "33inf4", 1);
             if(inicioSesion){
                 System.out.print("Inicio de sesion exitoso");
@@ -69,38 +70,38 @@ public class Cliente {
                 login.setFecha_hora(new Timestamp(System.currentTimeMillis()));
                 login.setUsuarioRegistrado(loginauth.obtenerUsuarioRegistrado("usuario34", "33inf4", 1));
                 loginauth.insertLogin(login);
-            }*/
+            }
 
             //Insertar
-            /* Usuario nuevoUsuario = new Usuario("usuario34", "33inf4");
-            usuarioDAO.insertarUsuario(nuevoUsuario);
-
-            Servicio nuevoServicio = new Servicio("Certificado", "11000");
+            Servicio nuevoServicio = new Servicio(10, "CertificadoNotas", "11000");
             servicioDAO.insertServicio(nuevoServicio);
 
-            Persona nuevaPersona = new Persona("Carlos", "Marin", "3140367472");
-            personaDAO.insertPersona(nuevaPersona);*/
+            Persona nuevaPersona = new Persona(10, "Carlos", "Marin", "3140367472");
+            personaDAO.insertPersona(nuevaPersona);
+
+            Usuario nuevoUsuario = new Usuario(3, "usuario34", "33inf4",nuevaPersona);
+            usuarioDAO.insertarUsuario(nuevoUsuario);
 
             //Eliminar
-            /*usuarioDAO.eliminarUsuario(3);
+            usuarioDAO.eliminarUsuario(3);
 
             servicioDAO.eliminarServicio(1);
 
             personaDAO.eliminarPersona(1);
-            */
+
 
             //Actualizar
-            /*Servicio actServicio = new Servicio("CertificadoNotas", "15000");
+            Servicio actServicio = new Servicio(4,"CertificadoNotas", "15000");
             servicioDAO.actualizarServicio(actServicio, 10);
 
-            Persona actPersona= new Persona("Liliana", "Gomez", "3204671297");
-            personaDAO.actualizarPersona(actPersona,10 );
+            Persona actPersona= new Persona(1, "Liliana", "Gomez", "3265671297");
+            personaDAO.actualizarPersona(actPersona,1 );
 
-            Usuario actUsuario = new Usuario("Lili", "asdkcme");
-            usuarioDAO.actualizarUsuario(actUsuario,10 );*/
+            Usuario actUsuario = new Usuario(6,"Lili", "asdkcme",actPersona);
+            usuarioDAO.actualizarUsuario(actUsuario,10 );
 
             //Mostrar
-            /*List<Servicio> servicios = servicioDAO.obtenerServicio();
+            List<Servicio> servicios = servicioDAO.obtenerServicio();
             for(Servicio servicio : servicios){
                 System.out.println(servicio.toString());
             }
@@ -113,9 +114,9 @@ public class Cliente {
             List<Persona> personas = personaDAO.obtenerPersona();
             for (Persona persona : personas) {
                 System.out.println(persona.toString());
-            }*/
-            connection.commit();
+            }
 
+            connection.commit();
         } catch (SQLException e) {
             e.printStackTrace();
             try {

@@ -51,11 +51,12 @@ public class PersonaDAO {
         return personas;
     }
     public void actualizarPersona(Persona actpersona, int persona_id) throws SQLException{
-        String sql = "UPDATE persona SET Nombre =?, Apellido=? WHERE ID_Persona=? ";
+        String sql = "UPDATE persona SET Nombre =?, Apellido =?, Telefono =? WHERE ID_Persona=? ";
         try (PreparedStatement statement = conexion.prepareStatement(sql)) {
             statement.setString(1, actpersona.getNombre());
+            statement.setInt(4, persona_id);
             statement.setString(2, actpersona.getApellido());
-            statement.setInt(3, persona_id);
+            statement.setString(3, actpersona.getTelefono());
             statement.executeUpdate();
         }
     }
