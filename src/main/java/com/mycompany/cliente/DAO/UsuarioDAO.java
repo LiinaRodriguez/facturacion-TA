@@ -23,7 +23,6 @@ public class UsuarioDAO {
             statement.executeUpdate();
         }
     }
-
     public void eliminarUsuario(int usuario_id) throws SQLException {
         String sql = "DELETE FROM usuario WHERE ID_Usuario =?";
         try (PreparedStatement statement = conexion.prepareStatement(sql)) {

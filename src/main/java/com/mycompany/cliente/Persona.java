@@ -4,18 +4,23 @@ public class Persona {
 
     protected  int id;
     protected String nombre;
-    protected String correo;
     protected String apellido;
     protected String telefono;
-    
-    public Persona(int id, String nombre, String apellido, String telefono){
+    protected String correo;
+    protected String carnet;
+
+    public Persona(int id, String nombre, String apellido, String telefono, String correo, String carnet){
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
+        this.correo = correo;
+        this.carnet = carnet;
     }
-    public Persona(){
+    public Persona(int id){
+        this.id = id;
     }
+    public  Persona(){}
     public void setId(int id){ this.id = id; }
 
     public void setNombre(String nombre) {

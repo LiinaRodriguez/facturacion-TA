@@ -7,11 +7,9 @@ public class Docente extends Persona {
     private String carnet;
 
     public Docente(int id, String nombre, String apellido, String telefono, String Facultad, String correo, String carnet) {
-        super(id, nombre, apellido, telefono);
+        super(id, nombre, apellido, telefono, correo, carnet);
         this.Facultad = Facultad;
         this.id = id;
-        this.correo =correo;
-        this.carnet = carnet;
     }
 
     public String getFacultad() {

@@ -9,7 +9,6 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public class Cliente {
-
     public static void main(String[] args) {
 
         //Conexion con la base de datos
@@ -17,6 +16,7 @@ public class Cliente {
         String db_usuario = "root";
         String db_contrasena = "3c_3Za24umYfr$g";
         Connection connection = null;
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -32,34 +32,7 @@ public class Cliente {
             DetalleVentaServicioDAO detalleVentaServicioDAO = new DetalleVentaServicioDAO(connection);
             PlataformaDAO plataformaDAO = new PlataformaDAO(connection);
             UsuarioRegistradoDAO usuarioRegistradoDAO = new UsuarioRegistradoDAO(connection);
-
-            //Nuevo Servicio
-            Servicio servicio1 = new Servicio(2,"Carnet", "2000");
-            servicioDAO.insertServicio(servicio1);
-
-            //Nueva DetalleVentaServicio
-            DetalleVentaServicio detalleventaservicio = new DetalleVentaServicio(1, "02-10-23", 2, servicio1);
-            detalleVentaServicioDAO.insertDetalleVentaServicio(detalleventaservicio);
-
-            //Nueva plataforma
-            Plataforma plataforma = new Plataforma(1, "SIAU");
-            plataformaDAO.insertarPlataforma(plataforma);
-
-            //Nueva persona
-            /*Persona nuevaPersona = new Persona();
-            nuevaPersona.setId(1);
-            nuevaPersona.setNombre("Carlos");
-            nuevaPersona.setApellido("Marin");
-            nuevaPersona.setTelefono("3140367472");
-            personaDAO.insertPersona(nuevaPersona);*/
-
-            //Nuevo usuario
-            /*Usuario nuevoUsuario = new Usuario(1, "usuario34", "33inf4", nuevaPersona);
-            usuarioDAO.insertarUsuario(nuevoUsuario);*/
-
-            //Nuevo usuario registrado
-            /*UsuarioRegistrado usuarioRegistrado = new UsuarioRegistrado(1,nuevoUsuario, plataforma);
-            usuarioRegistradoDAO.insertarUsuarioRegistrado(usuarioRegistrado);*/
+            EstudianteDAO estudianteDAO = new EstudianteDAO(connection);
 
             //Login
             Loginauth loginauth = new Loginauth(connection);
@@ -72,33 +45,26 @@ public class Cliente {
                 loginauth.insertLogin(login);
             }
 
-            //Insertar
-            Servicio nuevoServicio = new Servicio(10, "CertificadoNotas", "11000");
-            servicioDAO.insertServicio(nuevoServicio);
-
-            Persona nuevaPersona = new Persona(10, "Carlos", "Marin", "3140367472");
-            personaDAO.insertPersona(nuevaPersona);
-
-            Usuario nuevoUsuario = new Usuario(3, "usuario34", "33inf4",nuevaPersona);
-            usuarioDAO.insertarUsuario(nuevoUsuario);
+            Estudiante estudiante = new Estudiante(2,  2,"Ing Electronica");
+            estudianteDAO.insertarEstudiante(estudiante);
 
             //Eliminar
-            usuarioDAO.eliminarUsuario(3);
+          /*  usuarioDAO.eliminarUsuario(3);
 
             servicioDAO.eliminarServicio(1);
 
-            personaDAO.eliminarPersona(1);
+            personaDAO.eliminarPersona(1);*/
 
 
             //Actualizar
-            Servicio actServicio = new Servicio(4,"CertificadoNotas", "15000");
+            /*Servicio actServicio = new Servicio(4,"CertificadoNotas", "15000");
             servicioDAO.actualizarServicio(actServicio, 10);
 
-            Persona actPersona= new Persona(1, "Liliana", "Gomez", "3265671297");
+            Persona actPersona= new Persona(1, "Liliana", "Gomez", "3265671297", "", "130002672");
             personaDAO.actualizarPersona(actPersona,1 );
 
             Usuario actUsuario = new Usuario(6,"Lili", "asdkcme",actPersona);
-            usuarioDAO.actualizarUsuario(actUsuario,10 );
+            usuarioDAO.actualizarUsuario(actUsuario,10 );*/
 
             //Mostrar
             List<Servicio> servicios = servicioDAO.obtenerServicio();
@@ -129,6 +95,7 @@ public class Cliente {
             }
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
+
         } finally {
             try {
                 // Restaurar la configuración de autocommit

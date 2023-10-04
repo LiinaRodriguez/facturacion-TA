@@ -31,6 +31,7 @@ public class PersonaDAO {
             statement.executeUpdate();
         }
     }
+
     public List<Persona> obtenerPersona() throws SQLException {
         List<Persona> personas = new ArrayList<>();
         String sql = "SELECT * FROM persona";
@@ -43,8 +44,6 @@ public class PersonaDAO {
                 persona.setCorreo(resultSet.getString("CorreoElectronico"));
                 persona.setApellido(resultSet.getString("Apellido"));
                 persona.setTelefono(resultSet.getString("Telefono"));
-                //persona.set(resultSet.getString("contrasena"));
-
                 personas.add(persona);
             }
         }
@@ -54,9 +53,9 @@ public class PersonaDAO {
         String sql = "UPDATE persona SET Nombre =?, Apellido =?, Telefono =? WHERE ID_Persona=? ";
         try (PreparedStatement statement = conexion.prepareStatement(sql)) {
             statement.setString(1, actpersona.getNombre());
-            statement.setInt(4, persona_id);
             statement.setString(2, actpersona.getApellido());
             statement.setString(3, actpersona.getTelefono());
+            statement.setInt(4, persona_id);
             statement.executeUpdate();
         }
     }

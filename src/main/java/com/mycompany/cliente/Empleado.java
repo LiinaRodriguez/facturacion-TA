@@ -2,26 +2,14 @@ package com.mycompany.cliente;
 
 public class Empleado extends Persona {
     private String oficio;
-    private String correo;
-    private String carnet;
 
-    public Empleado(int id, String nombre, String apellido, String telefono, String oficio, String correo, String carnet) {
-        super(id, nombre,apellido, telefono);
+    public Empleado(int id, String nombre, String apellido, String telefono,  String correo, String carnet, String oficio) {
+        super(id, nombre,apellido, telefono, correo, carnet);
         this.oficio= oficio;
-        this.correo = correo;
-        this.carnet = carnet;
     }
 
     public String getOficio() {
         return oficio;
-    }
-
-    public String getCorreo(){
-        return correo;
-    }
-
-    public String getCarnet(){
-        return carnet;
     }
 
     @Override
