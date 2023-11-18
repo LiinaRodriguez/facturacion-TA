@@ -9,7 +9,7 @@ public class Conexion {
     public Conexion() {
         String jdbcUrl = "jdbc:mysql://localhost:3306/facturacion_db";
         String db_usuario = "root";
-        String db_contrasena = "3c_3Za24umYfr$g";
+        String db_contrasena = "root";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
