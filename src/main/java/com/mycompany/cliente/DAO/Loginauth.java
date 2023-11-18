@@ -5,18 +5,14 @@ import com.mycompany.cliente.Plataforma;
 import com.mycompany.cliente.Usuario;
 import com.mycompany.cliente.UsuarioRegistrado;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Loginauth {
     private Connection conexion;
-
+    //private boolean sesion = true;
     public Loginauth(Connection conexion){this.conexion = conexion; }
-
     public boolean verificarInicioSesion(String usuario, String contrasena, int plataformaID){
         String sql = "SELECT  COUNT(*) FROM usuarioregistrado ur "+
                 "INNER JOIN usuario u ON ur.UsuarioID = u.ID_Usuario "+
@@ -37,7 +33,19 @@ public class Loginauth {
         }
         return false;
     }
+    public void iniciarSesion(boolean inicioSesion){
 
+      /* if(inicioSesion){
+            System.out.print("Inicio de sesion exitoso");
+            Login login = new Login();
+            login.setFecha_hora(new Timestamp(System.currentTimeMillis()));
+            login.setUsuarioRegistrado(loginauth.obtenerUsuarioRegistrado("usuario34", "33inf4", 1));
+            loginauth.insertLogin(login);
+        }*/
+    }
+    public void cerrarSesion(){
+        //cerrarSesion if(sesion){}
+    }
    public UsuarioRegistrado obtenerUsuarioRegistrado(String usuario, String contrasena, int plataformaID){
         String sql = "SELECT ur.ID_UsuarioRegistrado, ur.UsuarioID, ur.PlataformaID, u.*, p.* FROM usuarioregistrado ur " +
                 "INNER JOIN usuario u ON ur.UsuarioID = u.ID_Usuario " +
@@ -73,7 +81,6 @@ public class Loginauth {
             }
             return null;
     }
-
     public void insertLogin(Login login) throws SQLException{
         String sql = "INSERT INTO login ( UsuarioRegistradoID) VALUES (?)";
         try(PreparedStatement statement = conexion.prepareStatement(sql)){

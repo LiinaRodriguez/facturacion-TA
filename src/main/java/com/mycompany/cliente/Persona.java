@@ -51,6 +51,13 @@ public class Persona {
         return telefono;
     }
 
+    public void imprimirInformacion(){
+        System.out.println("Información básica de la persona");
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Apellido: " + apellido);
+        System.out.println("Telefono: " + telefono);
+    }
+
     @Override
     public String toString() {
         return "Persona " + "nombre: " + nombre + ", apellido: " + apellido + ", telefono: " + telefono + "";

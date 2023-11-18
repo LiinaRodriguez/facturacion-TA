@@ -31,7 +31,9 @@ public class DetalleVentaServicio {
     public Servicio getServicio() {
         return servicio;
     }
-
+    public double calculaTotalVenta(){
+        return cantidad * Integer.parseInt(servicio.getPrecioServicio());
+    }
     @Override
     public String toString() {
         return "DetalleVentaServicio{" + "fecha=" + fecha + ", cantidad=" + cantidad + ", servicio=" + servicio.toString() + '}';

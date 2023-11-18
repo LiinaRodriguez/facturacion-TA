@@ -28,6 +28,13 @@ public class Estudiante extends Persona {
     }
 
     @Override
+    public void imprimirInformacion() {
+        super.imprimirInformacion();
+        System.out.println("Tipo: Estudiante");
+        System.out.println("Carrera: " + carrera);
+    }
+
+    @Override
     public String toString() {
         return "Estudiante{" + "nombre=" + nombre + ", apellido=" + apellido + ", "
                 + "telefono=" + telefono + ", semestre=" + semestre + ", id=" + id + ", correo=" + correo + ", carnet=" + carnet + '}';

@@ -13,6 +13,12 @@ public class Empleado extends Persona {
     }
 
     @Override
+    public void imprimirInformacion() {
+        super.imprimirInformacion();
+        System.out.println("Tipo: Empleado");
+        System.out.println("Oficio: " + oficio);
+    }
+    @Override
     public String toString() {
         return "Empleado{" + "nombre=" + nombre + ", apellido=" + apellido + ", "
                 + "telefono=" + telefono + ", oficio=" + oficio + ", id=" + id + ", correo=" + correo + ", carnet=" + carnet + '}';
