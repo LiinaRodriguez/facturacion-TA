@@ -2,19 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.cliente;
+package entidad;
 
 /**
- *
  * @author Estudiante_MCA
  */
 public class Servicio {
     private int id;
     private String nombreServicio;
     private String precioServicio;
+    private static boolean encabezado = false;
     
-    public Servicio(int id, String nombreServicio, String precioServicio) {
-        this.id = id;
+    public Servicio( String nombreServicio, String precioServicio) {
         this.nombreServicio = nombreServicio;
         this.precioServicio = precioServicio;
     }
@@ -48,8 +47,21 @@ public class Servicio {
 
     @Override
     public String toString() {
-        return "Servicios" + ", Servicio: " + nombreServicio + ", Precio: " + precioServicio + "";
+        StringBuilder sb = new StringBuilder();
+        if (!encabezado){
+        // Agregamos encabezados de la tabla
+        sb.append(String.format("%-5s %-20s %-10s\n", "ID", "NOMBRE", "PRECIO"));
+        encabezado = true;
+        }
+        sb.append("--------------------------------------------------\n");
+
+        sb.append(String.format("%-5d %-20s %-10s\n", id, nombreServicio, precioServicio));
+
+        return sb.toString();
+        //return "Servicios" + ", Servicio: " + nombreServicio + ", Precio: " + precioServicio + "";
     }
+
+
 
           
 }

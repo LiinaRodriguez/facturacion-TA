@@ -1,4 +1,4 @@
-package com.mycompany.cliente;
+package entidad;
 
 public class PersonaCargo {
     

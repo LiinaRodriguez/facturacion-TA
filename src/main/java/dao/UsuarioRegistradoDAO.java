@@ -1,13 +1,9 @@
-package com.mycompany.cliente.DAO;
-import com.mycompany.cliente.Usuario;
-import com.mycompany.cliente.UsuarioRegistrado;
+package dao;
+import entidad.UsuarioRegistrado;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class UsuarioRegistradoDAO {
     private Connection conexion;

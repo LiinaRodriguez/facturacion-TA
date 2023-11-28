@@ -1,5 +1,5 @@
-package com.mycompany.cliente.DAO;
-import com.mycompany.cliente.Usuario;
+package dao;
+import entidad.Usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

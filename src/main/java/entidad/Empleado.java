@@ -1,15 +1,11 @@
-package com.mycompany.cliente;
+package entidad;
 
 public class Empleado extends Persona {
     private String oficio;
 
-    public Empleado(int id, String nombre, String apellido, String telefono,  String correo, String carnet, String oficio) {
-        super(id, nombre,apellido, telefono, correo, carnet);
-        this.oficio= oficio;
-    }
-
-    public String getOficio() {
-        return oficio;
+    public Empleado( String nombre, String apellido, String telefono,  String correo, String carnet) {
+        super( nombre,apellido, telefono, correo, carnet);
+        rol = String.valueOf(this.getClass().getSimpleName());
     }
 
     @Override

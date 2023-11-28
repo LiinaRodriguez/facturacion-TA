@@ -1,13 +1,11 @@
-package com.mycompany.cliente.DAO;
+package dao;
 
-import com.mycompany.cliente.Login;
-import com.mycompany.cliente.Plataforma;
-import com.mycompany.cliente.Usuario;
-import com.mycompany.cliente.UsuarioRegistrado;
+import entidad.Login;
+import entidad.Plataforma;
+import entidad.Usuario;
+import entidad.UsuarioRegistrado;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Loginauth {
     private Connection conexion;

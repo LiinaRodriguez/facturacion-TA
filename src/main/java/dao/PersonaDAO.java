@@ -1,5 +1,7 @@
-package com.mycompany.cliente.DAO;
-import com.mycompany.cliente.Persona;
+package dao;
+import entidad.Persona;
+import metodofactory.DBAdapter;
+import metodofactory.DBFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,17 +12,21 @@ import java.util.List;
 
 public class PersonaDAO {
     private Connection conexion;
-    public PersonaDAO(Connection conexion){
-        this.conexion = conexion;
+    private DBAdapter dbAdapter;
+    public PersonaDAO(){
+        dbAdapter = DBFactory.getDefaultDbAdapter();
     }
 
     public void insertPersona(Persona persona) throws  SQLException {
-        String sql = "INSERT INTO persona(ID_Persona,nombre, apellido, telefono) VALUES (?, ?, ?, ?)";
+        Connection conexion = dbAdapter.getConexion();
+        String sql = "INSERT INTO persona(nombre, apellido, correoelectronico, telefono, rol ) VALUES (?, ?, ?, ?,?)";
         try (PreparedStatement statement = conexion.prepareStatement(sql)) {
-            statement.setInt(1, persona.getId());
-            statement.setString(2, persona.getNombre());
-            statement.setString(3, persona.getApellido());
+            statement.setString(1, persona.getNombre());
+            statement.setString(2, persona.getApellido());
+            statement.setString(3, persona.getCorreo());
             statement.setString(4, persona.getTelefono());
+            //statement.setString(5, persona.getCarnet());
+            statement.setString(5, persona.getRol());
             statement.executeUpdate();
         }
     }
